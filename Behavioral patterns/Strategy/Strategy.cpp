@@ -1,42 +1,29 @@
 #include "Strategy.h"
 
-#include <iostream>
+#include <algorithm>
 
-std::string Weapon::getWeaponName() const {
-	return name;
+//DISCLAIMER!!!::: those sorts are temporary workarounds since i am working at implementing modern ones.
+
+void HeapSort::sort(std::vector<int>& c) const {
+	std::sort(std::begin(c), std::end(c));
 }
 
-size_t Weapon::getMuzzleVelocity() const {
-	return muzzle_velocity;
+void HeapSort::sort(std::list<int>& c) const {
+	c.sort();
 }
 
-std::string Sniper_Rifle::getWeaponName() const {
-	return Weapon::getWeaponName();
+void QuickSort::sort(std::vector<int>& c) const {
+	std::sort(std::begin(c), std::end(c)); 
 }
 
-size_t Sniper_Rifle::getMuzzleVelocity() const {
-	return Weapon::getMuzzleVelocity();
+void QuickSort::sort(std::list<int>& c) const {
+	c.sort();
 }
 
-void Sniper_Rifle::showScopeRanges() const {
-	std::cout << "Scope ranges from " << std::get<0>(zoomRanges) << " to " << std::get<1>(zoomRanges);
+void MergeSort::sort(std::vector<int>& c) const {
+	std::sort(std::begin(c), std::end(c));
 }
 
-std::string Shotgun::getWeaponName() const {
-	return Weapon::getWeaponName();
-}
-
-size_t Shotgun::getMuzzleVelocity() const {
-	return Weapon::getMuzzleVelocity();
-}
-
-void Shotgun::showEffectiveRange() const {
-	std::cout << "Effective range of " << getWeaponName() << " is " << effectiveRange;
-}
-
-void WeaponType::showWeapon() const {
-	if (weapon != nullptr)
-		std::cout << "Weapon name : " << weapon->getWeaponName() << "\nMuzzle velocity: " << weapon->getMuzzleVelocity();
-	else
-		std::cout << "Object weapon has no state type.\n";
+void MergeSort::sort(std::list<int>& c) const {
+	c.sort();
 }
